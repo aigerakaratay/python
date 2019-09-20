@@ -1,0 +1,31 @@
+# Returning the value of a char 
+def charValue(char): 
+	if char >= '0' and char <= '9': 
+		return ord(char) - ord('0') 
+	else: 
+		return ord(char) - ord('A') + 10; 
+
+#Function converting any number n of base b to Decimal
+def toDecimal(n,b): 
+	 
+	exp = 1 #Initial exponent of the base
+	res = 0	 #Initial result
+	n=str(n)
+	nlen = len(n)
+
+	# Any n of base b in Decimal generalized as n[len-1]*1 + n[len-1]*b + n[len-1]*(b^2) + ... 
+	for i in range(nlen - 1, -1, -1): 
+		n=int(n)
+		# Base's digit should be bigger than that of number's
+		if charValue(n(i)) >= b: 
+			print('Invalid Number') 
+			return -1
+		res = res + charValue(n(i)) * exp 
+		exp = exp * b 
+	return res
+        
+	
+# Testing
+inp = 0xB
+b = 16
+print('Decimal convertation of', inp, 'in base', b, 'is', toDecimal(inp, b)) 
